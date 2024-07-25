@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import {
-  Navbar as NextUiNavbar,
+  Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
@@ -12,19 +12,21 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
   Link,
+  Button,
   Divider,
 } from "@nextui-org/react";
+
+import type { NavbarProps } from "@nextui-org/react";
 
 import { cn } from "@/features/components/libs/utils";
 
 const menuItems = [
-  { label: "ศูนย์สอบ EPC", target: "section1" },
-  { label: "ทดลองสอบ", target: "section2" },
-  { label: "คอร์สที่เปิดสอน", target: "section3" },
-  { label: "ติดต่อเรา", target: "section4" },
+  { label: "ผลิตภัณฑ์", target: "section1" },
+  { label: "ตัวอย่างผู้ใช้ & รีวิว", target: "section2" },
+  { label: "สั่งซื้อ", target: "section3" },
 ];
 
-const Navbar = () => {
+const Header = (props: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("");
   const [isLargeScreen, setIsLargeScreen] = useState(false);
@@ -35,22 +37,19 @@ const Navbar = () => {
     const section1 = document.getElementById("section1");
     const section2 = document.getElementById("section2");
     const section3 = document.getElementById("section3");
-    const section4 = document.getElementById("section4");
 
-    if (section1 && section2 && section3 && section4) {
+    if (section1 && section2 && section3) {
       if (
         scrollPosition < section1.offsetTop ||
-        scrollPosition > section4.offsetTop + section4.offsetHeight
+        scrollPosition > section3.offsetTop + section3.offsetHeight
       ) {
         setActiveLink("");
       } else if (scrollPosition < section2.offsetTop) {
         setActiveLink("section1");
       } else if (scrollPosition < section3.offsetTop) {
         setActiveLink("section2");
-      } else if (scrollPosition < section4.offsetTop) {
-        setActiveLink("section3");
       } else {
-        setActiveLink("section4");
+        setActiveLink("section3");
       }
     }
   };
@@ -83,37 +82,45 @@ const Navbar = () => {
   }, []);
 
   return (
-    <NextUiNavbar
-      maxWidth="xl"
+    <Navbar
+      {...props}
+      maxWidth="lg"
+      isBordered
       classNames={{
-        base: cn("bg-white"),
-        wrapper: "w-full justify-center px-4 lg:px-0",
+        base: cn("border-default-100", {
+          "bg-default-200/50 dark:bg-default-100/50": isMenuOpen,
+        }),
+        wrapper: "w-full justify-center bg-transparent",
+        item: "hidden md:flex",
       }}
       height="60px"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
-      {/* Left Content */}
+      {!isLargeScreen && <NavbarMenuToggle className="text-default-600" />}
+
       <NavbarBrand>
         <Image
           priority
-          src="/assets/images/logo.svg"
+          src="/assets/images/logo.jpg"
           alt="Logo"
-          width={280}
+          width={130}
           height={60}
         ></Image>
       </NavbarBrand>
 
-      {/* Right Content */}
       {isLargeScreen && (
-        <NavbarContent className="md:flex" justify="end">
+        <NavbarContent
+          className="hidden h-11 gap-4 rounded-full border-small border-default-200/20 bg-background/60 px-4 shadow-medium backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50 md:flex"
+          justify="center"
+        >
           {menuItems.map((item, index) => (
             <NavbarItem className="cursor-pointer" key={`${item}-${index}`}>
               <Link
                 key={index}
                 className={
                   activeLink === item.target
-                    ? "text-[#003359] underline underline-offset-8 "
+                    ? "text-[#312107] underline underline-offset-8 "
                     : "text-default-600"
                 }
                 onClick={() => scrollToSection(item.target)}
@@ -126,10 +133,25 @@ const Navbar = () => {
         </NavbarContent>
       )}
 
-      {!isLargeScreen && <NavbarMenuToggle className="text-default-600" />}
+      <NavbarContent justify="end">
+        <NavbarItem className="ml-2 !flex gap-2">
+          <Button
+            className="sm:flex"
+            color="primary"
+            radius="full"
+            style={{
+              boxShadow: "inset 0 0 4px #312107",
+            }}
+            variant="ghost"
+            onClick={() => scrollToSection("section2")}
+          >
+            สั่งซื้อสินค้า
+          </Button>
+        </NavbarItem>
+      </NavbarContent>
 
       <NavbarMenu
-        className="top-[calc(var(--navbar-height)_-_1px)] max-h-fit bg-default-200/50 pb-6 pt-6 shadow-medium backdrop-blur-md backdrop-saturate-150 "
+        className="top-[calc(var(--navbar-height)_-_1px)] max-h-[100vh] bg-default-200/50 pt-6 shadow-medium backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50"
         motionProps={{
           initial: { opacity: 0, y: -20 },
           animate: { opacity: 1, y: 0 },
@@ -146,7 +168,7 @@ const Navbar = () => {
               key={index}
               className={
                 activeLink === item.target
-                  ? "text-[#003359]"
+                  ? "text-[#312107]"
                   : "text-default-600"
               }
               onClick={() => scrollToSection(item.target)}
@@ -158,8 +180,8 @@ const Navbar = () => {
           </NavbarMenuItem>
         ))}
       </NavbarMenu>
-    </NextUiNavbar>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default Header;

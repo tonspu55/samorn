@@ -27,7 +27,14 @@ const config: Config = {
         },
       },
       themes: {
-        light: {},
+        light: {
+          colors: {
+            primary: {
+              foreground: "#ffffff",
+              DEFAULT: "#312107",
+            },
+          },
+        },
         dark: {},
       },
     }),

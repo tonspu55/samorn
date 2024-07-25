@@ -25,9 +25,9 @@ const Footer = () => {
         <div className="flex items-center justify-center">
           <Image
             priority
-            src="/assets/images/logo.svg"
+            src="/assets/images/logo.jpg"
             alt="Logo"
-            width={380}
+            width={140}
             height={60}
           ></Image>
         </div>
