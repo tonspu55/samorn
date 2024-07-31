@@ -57,7 +57,7 @@ const Header = (props: NavbarProps) => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -60; // offset top 60px
+      const yOffset = -50; // offset top 60px
       const y =
         element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
@@ -143,7 +143,7 @@ const Header = (props: NavbarProps) => {
               boxShadow: "inset 0 0 4px #312107",
             }}
             variant="ghost"
-            onClick={() => scrollToSection("section2")}
+            onClick={() => scrollToSection("section3")}
           >
             สั่งซื้อสินค้า
           </Button>

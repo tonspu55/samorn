@@ -28,7 +28,7 @@ const SectionOne = () => {
     <section id="section1" className="py-4 md:py-6">
       <div className="container  max-w-[1024px] mx-auto ">
         <h2 className="flex flex-col px-4 md:px-6 font-bold justify-center text-center text-base  lg:text-2xl  text-[#312107]">
-          แชมพูปลูกผมแซมออน กลิ่นละมุน หอมอ่อนโยน สัมผัสสะอาด ใช้ได้ผลดี
+          Hair serum ปลูกผมแซมออน กลิ่นละมุน หอมอ่อนโยน สัมผัสสะอาด ใช้ได้ผลดี
           หยุดผมร่วง
         </h2>
         <div className="mt-4 md:px-6 px-4">
