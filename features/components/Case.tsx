@@ -1,7 +1,10 @@
 "use client";
 
 import useEmblaCarousel from "embla-carousel-react";
-
+import {
+  SelectedSnapDisplay,
+  useSelectedSnapDisplay,
+} from "./EmblaCarouselSelectedSnapDisplay";
 import {
   PrevButton,
   NextButton,
@@ -61,10 +64,23 @@ const bannerItem = [
     alt: "case",
     src_laptop: "/assets/images/case/LINE_ALBUM_case_240725_11.jpg",
   },
+  {
+    alt: "case",
+    src_laptop: "/assets/images/case/LINE_ALBUM_case_240802_1.jpg",
+  },
+  {
+    alt: "case",
+    src_laptop: "/assets/images/case/LINE_ALBUM_case_240802_2.jpg",
+  },
+  {
+    alt: "case",
+    src_laptop: "/assets/images/case/LINE_ALBUM_case_240802_3.jpg",
+  },
 ];
 
 const Case = ({ options }: PropType) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
 
   const {
     prevBtnDisabled,
@@ -104,6 +120,10 @@ const Case = ({ options }: PropType) => {
               disabled={nextBtnDisabled}
             />
           </div>
+          <SelectedSnapDisplay
+            selectedSnap={selectedSnap}
+            snapCount={snapCount}
+          />
         </div>
       </div>
     </div>

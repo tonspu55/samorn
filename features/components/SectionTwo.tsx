@@ -9,6 +9,24 @@ const CASE_REVIEW = [
     src_laptop: "/assets/images/case/LINE_ALBUM_case1_240725_4.jpg",
   },
 ];
+const AWARD = [
+  {
+    alt: "award",
+    src_laptop: "/assets/images/award/LINE_ALBUM_1.jpg",
+  },
+  {
+    alt: "award",
+    src_laptop: "/assets/images/award/LINE_ALBUM_2.jpg",
+  },
+  {
+    alt: "award",
+    src_laptop: "/assets/images/award/LINE_ALBUM_3.jpg",
+  },
+  {
+    alt: "award",
+    src_laptop: "/assets/images/award/LINE_ALBUM_4.jpg",
+  },
+];
 const OPTIONS: EmblaOptionsType = {};
 const SectionTwo = () => {
   return (
@@ -41,6 +59,22 @@ const SectionTwo = () => {
           </h2>
           <div className="max-w-[300px] mx-auto">
             <Review options={OPTIONS}></Review>
+          </div>
+          <div className="mx-auto max-w-[500px]">
+            {AWARD.map((item, index) => (
+              <Image
+                key={index}
+                src={item.src_laptop}
+                alt={item.alt}
+                className="mt-4"
+                width={1024}
+                height={0}
+                style={{
+                  height: "auto",
+                  width: "100%",
+                }}
+              ></Image>
+            ))}
           </div>
         </div>
       </section>

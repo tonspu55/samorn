@@ -11,6 +11,10 @@ import {
 import Image from "next/image";
 
 import { EmblaOptionsType } from "embla-carousel";
+import {
+  SelectedSnapDisplay,
+  useSelectedSnapDisplay,
+} from "./EmblaCarouselSelectedSnapDisplay";
 
 type PropType = {
   options?: EmblaOptionsType;
@@ -33,6 +37,7 @@ const bannerItem = [
 
 const Banner = ({ options }: PropType) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
 
   const {
     prevBtnDisabled,
@@ -74,6 +79,10 @@ const Banner = ({ options }: PropType) => {
                 disabled={nextBtnDisabled}
               />
             </div>
+            <SelectedSnapDisplay
+              selectedSnap={selectedSnap}
+              snapCount={snapCount}
+            />
           </div>
         </div>
       </section>

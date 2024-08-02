@@ -11,7 +11,7 @@ type SocialIconProps = Omit<IconProps, "icon">;
 const socialItems = [
   {
     name: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/profile.php?id=61552595019036&mibextid=ZbWKwL",
     icon: (props: SocialIconProps) => (
       <Icon {...props} icon="fontisto:facebook" />
     ),

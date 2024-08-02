@@ -8,6 +8,11 @@ import {
   usePrevNextButtons,
 } from "@/features/components/EmblaCarouselArrowButtons";
 
+import {
+  SelectedSnapDisplay,
+  useSelectedSnapDisplay,
+} from "./EmblaCarouselSelectedSnapDisplay";
+
 import Image from "next/image";
 
 import { EmblaOptionsType } from "embla-carousel";
@@ -17,30 +22,87 @@ type PropType = {
 };
 
 const bannerItem = [
-  //   {
-  //     alt: "review",
-  //     src_laptop: "/assets/images/chat/LINE_ALBUM_review.jpg",
-  //   },
   {
     alt: "review",
-    src_laptop: "/assets/images/chat/LINE_ALBUM_review_240725_1.jpg",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_15.jpg",
   },
   {
     alt: "review",
-    src_laptop: "/assets/images/chat/LINE_ALBUM_review_240725_2.jpg",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_16.jpg",
   },
   {
     alt: "review",
-    src_laptop: "/assets/images/chat/LINE_ALBUM_review_240725_3.jpg",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_17.jpg",
   },
   {
     alt: "review",
-    src_laptop: "/assets/images/chat/LINE_ALBUM_review_240725_4.jpg",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_18.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_19.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_1.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_2.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_3.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_4.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_5.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_6.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_7.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_8.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_9.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_10.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_11.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_12.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_13.jpg",
+  },
+  {
+    alt: "review",
+    src_laptop: "/assets/images/chat/LINE_ALBUM_reviews_240802_14.jpg",
   },
 ];
 
 const Review = ({ options }: PropType) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
 
   const {
     prevBtnDisabled,
@@ -80,6 +142,10 @@ const Review = ({ options }: PropType) => {
               disabled={nextBtnDisabled}
             />
           </div>
+          <SelectedSnapDisplay
+            selectedSnap={selectedSnap}
+            snapCount={snapCount}
+          />
         </div>
       </div>
     </div>

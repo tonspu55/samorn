@@ -13,19 +13,20 @@ const PRODUCT_ITEM = [
     discount_price: "1,890",
   },
   {
-    title: "แชมพู SamOrn 2",
-    src: "/assets/images/product/s431p.webp",
-    url: "https://shop.line.me/@samorn9/product/1006198792",
-    price: "1,380",
-    discount_price: "990",
-  },
-  {
     title: "Gold set เซรั่ม 1 (แถมฟรี แชมพู 1)",
     src: "/assets/images/product/s432p.webp",
     url: "https://shop.line.me/@samorn9/product/1006181550",
     price: "1,980",
     discount_price: "1,290",
   },
+  {
+    title: "แชมพู SamOrn 2",
+    src: "/assets/images/product/s431p.webp",
+    url: "https://shop.line.me/@samorn9/product/1006198792",
+    price: "1,380",
+    discount_price: "990",
+  },
+
   {
     title: "แชมพู SamOrn 1",
     src: "/assets/images/product/s433p.webp",
@@ -69,7 +70,7 @@ const SectionThree = () => {
                     {item.discount_price} บาท
                   </p>
                   <Link
-                    className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                    className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-full text-center md:w-auto"
                     color="success"
                     target="_blank"
                     href={item.url}
