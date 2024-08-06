@@ -26,6 +26,19 @@ const menuItems = [
   { label: "สั่งซื้อ", target: "section3" },
 ];
 
+const socialItems = [
+  {
+    alt: "facebook",
+    href: "https://www.facebook.com/profile.php?id=61552595019036&mibextid=ZbWKwL",
+    src: "/assets/images/facebook.png",
+  },
+  {
+    alt: "line",
+    href: "https://lin.ee/HRWGJVs",
+    src: "/assets/images/line.png",
+  },
+];
+
 const Header = (props: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("");
@@ -135,6 +148,16 @@ const Header = (props: NavbarProps) => {
 
       <NavbarContent justify="end">
         <NavbarItem className="ml-2 !flex gap-2">
+          {socialItems.map((item, index) => (
+            <Link key={index} isExternal href={item.href}>
+              <Image
+                src={item.src}
+                alt={item.alt}
+                width={40}
+                height={40}
+              ></Image>
+            </Link>
+          ))}
           <Button
             className="sm:flex"
             color="primary"

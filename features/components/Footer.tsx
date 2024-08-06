@@ -1,17 +1,19 @@
 "use client";
 
-import type { IconProps } from "@iconify/react";
-
 import React from "react";
 import { Link, Spacer } from "@nextui-org/react";
 import Image from "next/image";
 
-type SocialIconProps = Omit<IconProps, "icon">;
 const socialItems = [
   {
     alt: "facebook",
     href: "https://www.facebook.com/profile.php?id=61552595019036&mibextid=ZbWKwL",
-    src: "/assets/images/facebook.jpeg",
+    src: "/assets/images/facebook.png",
+  },
+  {
+    alt: "line",
+    href: "https://lin.ee/HRWGJVs",
+    src: "/assets/images/line.png",
   },
 ];
 
@@ -19,17 +21,7 @@ const Footer = () => {
   return (
     <footer className="flex w-full flex-col">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-center px-6 pb-10 pt-4 lg:px-8">
-        {/* <div className="flex items-center justify-center">
-          <Image
-            priority
-            src="/assets/images/logo.jpg"
-            alt="Logo"
-            width={140}
-            height={60}
-          ></Image>
-        </div> */}
-
-        <div className="flex justify-center mt-5 gap-x-4">
+        <div className="flex justify-center mt-5 gap-x-2">
           {socialItems.map((item, index) => (
             <Link key={index} isExternal href={item.href}>
               <Image
