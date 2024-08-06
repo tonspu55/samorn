@@ -117,8 +117,8 @@ const Header = (props: NavbarProps) => {
           priority
           src="/assets/images/logo.jpg"
           alt="Logo"
-          width={130}
-          height={60}
+          width={120}
+          height={50}
         ></Image>
       </NavbarBrand>
 
@@ -155,6 +155,10 @@ const Header = (props: NavbarProps) => {
                 alt={item.alt}
                 width={40}
                 height={40}
+                style={{
+                  minHeight: "25px",
+                  minWidth: "25px",
+                }}
               ></Image>
             </Link>
           ))}
